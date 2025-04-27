@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scraping Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    .result-container {
+      margin-top: 20px;
+    }
+
+    .scraped-item {
+      margin: 15px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Scraping Results</h1>
+  <p>URL: {{ url }}</p>
+  <p>Number of <strong>{{ tag }}</strong> elements found: <strong>{{ count }}</strong></p>
+
+  {% if filename %}
+  <p>Results have been saved to: <strong>{{ filename }}</strong></p>
+  {% endif %}
+
+  {% if error %}
+  <p class="error">Error: {{ error }}</p>
+  {% else %}
+  <div class="result-container">
+    {% for item in data %}
+    <div class="scraped-item">
+      {{ item.text }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <p><a href="/">Back to Home</a></p>
+</body>
+
+</html>

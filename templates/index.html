@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Scraper Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      width: 50%;
+      margin: 30px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      font-size: 16px;
+      color: #555;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #005bb5;
+    }
+
+    .message {
+      background-color: #f0f8ff;
+      padding: 10px;
+      border-radius: 4px;
+      color: #0073e6;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Web Scraper Tool</h1>
+  </header>
+
+  <div class="container">
+    <h2>Enter Website URL and Tag</h2>
+    <form method="POST">
+      <label for="url">Website URL:</label>
+      <input type="text" id="url" name="url" required placeholder="https://example.com">
+
+      <label for="tag">HTML Tag to Scrape:</label>
+      <input type="text" id="tag" name="tag" required placeholder="e.g., p, h1, a, li">
+
+      <input type="submit" value="Scrape">
+    </form>
+
+ 
+  </div>
+
+</body>
+
+</html>
