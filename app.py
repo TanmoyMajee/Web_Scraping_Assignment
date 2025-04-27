@@ -2,6 +2,7 @@ from flask import Flask, render_template ,request,redirect, url_for
 from bs4 import BeautifulSoup 
 import requests
 import os
+import csv
 from datetime import datetime
 app = Flask(__name__)
 
@@ -36,13 +37,25 @@ def scrap():
         
         count = len(data)
 
-        # Save to file
+        # Save to txt file
         os.makedirs("data", exist_ok=True)
-        with open("data/scraped_data.txt", 'w', encoding='utf-8') as file:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename1 = f"data/scrapped_{timestamp}.txt" 
+        filename2 = f"data/scrapped_{timestamp}.csv"
+        with open(filename1, 'w', encoding='utf-8') as file:
           for element in data:
                     text = element.get_text(strip=True)
                     if text:
                         file.write(text + "\n\n")
+        #  write in csv 
+        with open(filename2, 'w', newline='', encoding='utf-8') as file:
+          writer = csv.writer(file)
+          writer.writerow(['URL', 'Tag', 'Content'])
+          for element in data:
+            text = element.get_text(strip=True)
+            if text:
+              writer.writerow([url, tag, text]) 
+
 
         return render_template('result.html', data=data, url=url, count=count)
     except Exception as e:
